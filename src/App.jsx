@@ -1,10 +1,10 @@
-import Layout from "./containers/Layout/Layout";
-import EditContent from "./components/Editor/Editor";
+import Layout from './containers/Layout/Layout';
+import EditContent from './components/Editor/Editor';
 
 function App() {
   return (
     <Layout>
-      <EditContent/>
+      <EditContent />
     </Layout>
   );
 }

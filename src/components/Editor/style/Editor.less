@@ -6,20 +6,39 @@
 form {
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  margin: 2rem auto;
+  background-color: white;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+}
+
+.ant-input, .ant-input-number {
+  border-top: transparent;
+  border-left: transparent;
+  border-right: transparent;
+  border-radius: 0;
+}
+
+.ant-input:focus, .ant-input-number:focus, .ant-input-number-focused {
+  box-shadow: none;
+}
+
+.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
+}
+
+.ant-select-focused:not(.ant-select-customize-input) {
+  box-shadow: none !important;
 }
 
 .ant-btn {
   background-color: rgb(47, 153, 79);
 }
 
-.ant-btn:hover {
-  background-color: rgb(47, 153, 79);
-  color: white;
-  border: none;
-}
-
-.ant-btn:focus {
+.ant-btn:hover, .ant-btn:focus {
   background-color: rgb(47, 153, 79);
   color: white;
   border: none;
@@ -38,28 +57,19 @@ form {
   padding: 5px 10px;
 }
 
-.input-job-info:focus{
-    outline: none;
+.input-job-info:focus {
+  outline: none;
 }
 
 .label-input-job-info {
   font-size: 18px;
 }
 
-.form-group-column {
-  background-color: white;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
+.row-custome {
+  margin-top: 1rem;
 }
 
-.form-group-column-2 {
-    background-color: white;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-  }
-
-.form-group-row {
-    display: flex;
+.col-custome {
+  display: flex;
+  flex-direction: column;
 }
