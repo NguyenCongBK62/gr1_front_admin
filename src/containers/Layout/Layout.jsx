@@ -2,6 +2,7 @@ import { Layout as AntLayout } from 'antd';
 import React from 'react';
 import Sidebar from '../../components/Slidebar/Sidebar';
 import Navbar from '../../components/Navbar/Navbar';
+import { Outlet } from 'react-router-dom';
 
 export default function Layout({ children }) {
   const { Content } = AntLayout;
@@ -15,9 +16,10 @@ export default function Layout({ children }) {
           marginLeft: '200px',
           backgroundColor: '#f5f5f5',
           padding: '1rem',
+          height: '100vh',
         }}
       >
-        {children}
+        <Outlet />
       </Content>
     </div>
   );
