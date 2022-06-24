@@ -1,11 +1,6 @@
-import Layout from './containers/Layout/Layout';
-import EditContent from './components/Editor/Editor';
+import React from 'react';
+import RouteApp from './RouteApp';
 
-function App() {
-  return (
-    <Layout>
-      <EditContent />
-    </Layout>
-  );
+export default function App() {
+  return <RouteApp />;
 }
-export default App;
