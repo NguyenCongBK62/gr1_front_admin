@@ -1,25 +1,40 @@
-import { Layout as AntLayout } from 'antd';
-import React from 'react';
-import Sidebar from '../../components/Slidebar/Sidebar';
-import Navbar from '../../components/Navbar/Navbar';
+import { Layout as AntLayout, Spin } from 'antd';
+import React, { useState } from 'react';
+import Sidebar from 'components/Slidebar/Sidebar';
+import Navbar from 'components/Navbar/Navbar';
 import { Outlet } from 'react-router-dom';
+import bg from 'assets/bg.svg';
+import 'containers/Layout/style/Layout.less';
 
-export default function Layout({ children }) {
+export default function Layout() {
+  const [collapsed, setCollapsed] = useState(true);
+
+  const toggleCollapsed = () => {
+    setCollapsed(!collapsed);
+  };
+
   const { Content } = AntLayout;
   return (
-    <div className="main">
+    <div
+      style={{
+        backgroundImage: `url(${bg})`,
+      }}
+      className={'main'}
+    >
       <Navbar />
-      <Sidebar />
+      <Sidebar collapsed={collapsed} toggleCollapsed={toggleCollapsed} />
       <Content
-        style={{
-          marginTop: '64px',
-          marginLeft: '200px',
-          backgroundColor: '#f5f5f5',
-          padding: '1rem',
-          height: '100vh',
-        }}
+        className={collapsed ? 'section section-collapsed' : 'section'}
+        style={{ marginTop: '100px' }}
       >
-        <Outlet />
+        <Spin
+          tip=""
+          size="large"
+          spinning={false}
+          className={'full-screen-spin'}
+        >
+          <Outlet />
+        </Spin>
       </Content>
     </div>
   );

@@ -2,7 +2,7 @@ import { Button, Card, Form, Input, Spin } from 'antd';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import bg from '../../assets/bg.svg';
-import loginCover from '../../assets/logo.png';
+import loginCover from '../../assets/login-cover.svg';
 import './Login.less';
 
 export default function Login() {

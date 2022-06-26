@@ -1,8 +1,9 @@
+import JobManager from 'containers/JobManager/JobManager';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import CompanyProfile from './components/CompanyProfile/CompanyProfile';
-import JobForm from './components/JobForm/JobForm';
-import Layout from './containers/Layout/Layout';
-import Login from './containers/Login/Login';
+import CompanyProfile from 'components/CompanyProfile/CompanyProfile';
+import JobForm from 'components/JobForm/JobForm';
+import Layout from 'containers/Layout/Layout';
+import Login from 'containers/Login/Login';
 
 export default function RouteApp() {
   return (
@@ -12,6 +13,7 @@ export default function RouteApp() {
         <Route path="/" element={<Layout />}>
           <Route path="jobs" element={<JobForm />} />
           <Route path="companyprofile" element={<CompanyProfile />} />
+          <Route path="jobmanager" element={<JobManager />} />
         </Route>
       </Routes>
     </BrowserRouter>
