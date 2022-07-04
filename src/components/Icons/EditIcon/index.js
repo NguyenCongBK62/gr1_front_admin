@@ -1,18 +1,20 @@
-import React from "react";
-import { STROKE } from "constant";
-import PropTypes from "prop-types";
+import React from 'react';
+import { STROKE } from 'constant';
+import PropTypes from 'prop-types';
 
 export default function EditIcon({
   width,
   height,
   customStyles,
   stroke = STROKE,
+  minX = 0,
+  minY = 0,
 }) {
   return (
     <svg
       width={width}
       height={height}
-      viewBox={`0 0 ${width} ${height}`}
+      viewBox={`${minX} ${minY} ${width} ${height}`}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       style={customStyles}
@@ -28,8 +30,8 @@ export default function EditIcon({
 }
 
 EditIcon.defaultProps = {
-  width: "18",
-  height: "18",
+  width: '18',
+  height: '18',
   customStyles: {},
 };
 
@@ -38,4 +40,6 @@ EditIcon.propTypes = {
   height: PropTypes.string,
   stroke: PropTypes.string,
   customStyles: PropTypes.object,
+  minX: PropTypes.number,
+  minY: PropTypes.number,
 };

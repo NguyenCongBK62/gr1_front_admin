@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Controller } from "react-hook-form";
-import { Radio } from "antd";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Controller } from 'react-hook-form';
+import { Radio } from 'antd';
 
 export default function RadioButton({
   control,
@@ -9,7 +9,8 @@ export default function RadioButton({
   defaultValue,
   validation = {},
   buttons,
-  classes = "radio-button-container",
+  width = '212',
+  classes = 'radio-button-container',
 }) {
   return (
     <Controller
@@ -17,13 +18,17 @@ export default function RadioButton({
       name={inputName}
       rules={validation}
       defaultValue={defaultValue}
-      render={({ onChange, value, name }) => (
+      render={({ field: { onChange, value, name } }) => (
         <Radio.Group
           className={classes}
           defaultValue={defaultValue}
           onChange={(v) => onChange(v.target.value)}
           value={value}
           name={name}
+          style={{
+            maxWidth: width,
+            minWidth: width,
+          }}
         >
           {buttons.map((button, index) => (
             <Radio.Button

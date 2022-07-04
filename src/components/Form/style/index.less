@@ -1,4 +1,4 @@
-@import "../../../style/variables.less";
+@import '../../../style/variables.less';
 
 .form-wrapper {
   padding-right: 25px;
@@ -97,4 +97,12 @@
 /* iPads (portrait) ----------- */
 @media only screen and (min-device-width: 375px) and (max-device-width: 1023px) and (orientation: portrait) {
   .responsiveForm();
+}
+
+.ck-rounded-corners .ck.ck-editor__main > .ck-editor__editable,
+.ck.ck-editor__main > .ck-editor__editable.ck-rounded-corners {
+  border-radius: var(--ck-border-radius);
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  padding-left: 30px;
 }

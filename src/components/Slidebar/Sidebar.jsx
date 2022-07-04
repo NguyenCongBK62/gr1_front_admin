@@ -71,8 +71,8 @@ export default function Sidebar({ collapsed, toggleCollapsed }) {
         selectedKeys={[location.pathname]}
         sub
       >
-        <Menu.Item key="/jobs">
-          <NavLink to="/jobs">
+        <Menu.Item key="/jobpost">
+          <NavLink to="/jobpost">
             <EditIcon
               width={IconWidth}
               height={IconHeight}

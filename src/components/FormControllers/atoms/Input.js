@@ -1,14 +1,15 @@
-import React from "react";
-import { Input as AntInput } from "antd";
-import PropTypes from "prop-types";
-import { Controller } from "react-hook-form";
+import React from 'react';
+import { Input as AntInput } from 'antd';
+import PropTypes from 'prop-types';
+import { Controller } from 'react-hook-form';
 export default function Input({
   control,
   inputName,
   validation = {},
   errors,
   inputProps = {},
-  defaultValue = "",
+  defaultValue = '',
+  width = '415px',
   callback = () => {},
 }) {
   return (
@@ -18,16 +19,20 @@ export default function Input({
         name={inputName}
         rules={validation}
         defaultValue={defaultValue}
-        render={({ onChange, value, name }) => (
+        render={({ field: { onChange, value, name } }) => (
           <AntInput
             {...inputProps}
             autoComplete="new-password"
-            className={"ant-input-custom"}
+            className={'ant-input-custom'}
             name={name}
             value={value}
             onChange={(v) => {
               onChange(v);
               callback(v);
+            }}
+            style={{
+              maxWidth: width,
+              minWidth: width,
             }}
           />
         )}
@@ -46,4 +51,5 @@ Input.propTypes = {
   getValues: PropTypes.any,
   defaultValue: PropTypes.string,
   callback: PropTypes.func,
+  witdh: PropTypes.any,
 };

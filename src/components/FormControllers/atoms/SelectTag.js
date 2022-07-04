@@ -2,8 +2,9 @@ import React from 'react';
 import { Select as AntSelect } from 'antd';
 import PropTypes from 'prop-types';
 import { Controller } from 'react-hook-form';
+import 'components/FormControllers/style/index.less';
 
-export default function Select({
+export default function SelectTag({
   control,
   inputName,
   defaultValue,
@@ -11,6 +12,7 @@ export default function Select({
   validation,
   placeholder,
   errors = {},
+  width = '212',
   inputProps = { style: { width: 212 } },
   callback = () => {},
 }) {
@@ -30,12 +32,18 @@ export default function Select({
                 onChange(v);
                 callback();
               }}
+              mode="tags"
               value={value}
               name={name}
               virtual={false}
               getPopupContainer={(trigger) => trigger.parentNode}
               defaultValue={defaultValue}
               placeholder={placeholder}
+              allowClear="true"
+              style={{
+                maxWidth: width,
+                minWidth: width,
+              }}
             >
               {Options.map((option) => (
                 <Option
@@ -57,7 +65,7 @@ export default function Select({
   );
 }
 
-Select.propTypes = {
+SelectTag.propTypes = {
   control: PropTypes.any,
   inputName: PropTypes.string,
   placeholder: PropTypes.string,
@@ -67,4 +75,5 @@ Select.propTypes = {
   validation: PropTypes.any,
   callback: PropTypes.func,
   defaultValue: PropTypes.any,
+  width: PropTypes.any,
 };

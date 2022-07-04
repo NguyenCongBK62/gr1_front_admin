@@ -1,4 +1,4 @@
-@import "../../../style/variables.less";
+@import '../../../style/variables.less';
 
 .ant-list {
   height: 195px;
@@ -44,9 +44,6 @@
 
 .ant-input-custom {
   height: 40px;
-  width: 100%;
-  max-width: 212px;
-  min-width: 212px;
   background: #fafafa;
   &::placeholder {
     color: #bbbbbb;
@@ -67,6 +64,11 @@
 .radio-button-container-flex-start {
   display: flex;
   justify-content: flex-start;
+}
+
+.radio-button-container-space-betwen {
+  display: flex;
+  justify-content: space-between;
 }
 
 .input-elements-inline {
@@ -92,7 +94,7 @@
   text-align: center;
   border: none;
   cursor: pointer;
-  width: 30%;
+  width: 45%;
   // max-width: 212px;
   margin-right: 20px;
   &:last-child {
@@ -240,9 +242,6 @@
     top: 44px !important;
     z-index: 9999;
   }
-  .ant-input-custom {
-    max-width: 100% !important;
-  }
   .staff-phone-number {
     width: 100% !important;
   }
@@ -292,4 +291,9 @@
 /* iPads (portrait) ----------- */
 @media only screen and (min-device-width: 375px) and (max-device-width: 1023px) and (orientation: portrait) {
   .responsiveFormCtrl();
+}
+
+.ant-select-selector {
+  height: 40px;
+  background-color: #fafafa !important;
 }

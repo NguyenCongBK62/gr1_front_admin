@@ -30,7 +30,7 @@ export default function Navbar({
           <>
             <Col xs={16} sm={16} md={12} lg={8} xl={12} className="search">
               <Input
-                placeholder="予約を検索（名前/名前カナ/携帯番号）"
+                placeholder="Tìm kiếm việc làm theo từ khóa"
                 suffix={<SearchIcon />}
                 className="search-bar"
               />
@@ -51,7 +51,6 @@ export default function Navbar({
                   placement="bottomRight"
                   arrow
                   trigger={['click']}
-                  // onClick={showBackdrop}
                   onVisibleChange={showBackdrop}
                   overlayClassName={'menu-items-dropdown'}
                 >
