@@ -9,8 +9,8 @@ import FileTextIcon from 'components/Icons/FileTextIcon';
 import TrashIcon from 'components/Icons/TrashIcon';
 import Table from 'components/Table/Table';
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { setToastStatus } from 'Store/modules/AlertToast';
 
 const { confirm } = Modal;
@@ -18,7 +18,8 @@ const { confirm } = Modal;
 export default function JobManager() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  const [dataSource, setDataSource] = useState([]);
+  const [fullDataSource, setFullDataSource] = useState([]);
   const customStyles = {
     cursor: 'pointer',
   };
@@ -80,9 +81,21 @@ export default function JobManager() {
         ) : null,
     },
     {
-      title: 'Số lượng',
+      title: 'Số lượng tuyển',
       dataIndex: 'amount',
       width: 100,
+    },
+    {
+      title: 'CV hiện có',
+      dataIndex: 'cv',
+      width: 70,
+      render: function renderEditIcon(_, record) {
+        return dataSource.length >= 1 ? (
+          <div onClick={() => viewCV(record.id)} style={customStyles}>
+            <FileTextIcon customeStyles={customStyles} />
+          </div>
+        ) : null;
+      },
     },
     {
       title: 'Chỉnh sửa',
@@ -112,9 +125,6 @@ export default function JobManager() {
       },
     },
   ];
-
-  const [dataSource, setDataSource] = useState([]);
-  const [fullDataSource, setFullDataSource] = useState([]);
 
   useEffect(() => {
     getData();
@@ -176,6 +186,10 @@ export default function JobManager() {
 
   const handleDataSource = (newData) => {
     setDataSource(newData);
+  };
+
+  const viewCV = async (jobId) => {
+    navigate(`/viewCV/${jobId}`, { replace: true });
   };
 
   return (
