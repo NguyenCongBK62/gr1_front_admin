@@ -6,13 +6,20 @@ import DataSidePreview from 'components/DataSidePreview';
 import JobForm from 'components/Form/JobForm';
 import FormHeader from 'components/FormHeader/index';
 import EditIcon from 'components/Icons/EditIcon';
+import 'containers/JobPostEdit/style/JobPostEdit.less';
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+import { setToastStatus } from 'Store/modules/AlertToast';
 
 export default function JobPostEdit() {
   const methods = useForm({
     mode: 'onSubmit',
   });
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { handleSubmit, control, setValue, watch } = methods;
   const { id } = useParams();
   const [jobDetails, setJobDetails] = useState({});
@@ -27,8 +34,15 @@ export default function JobPostEdit() {
       })
         .then((response) => response.json())
         .then((data) => {
-          setJobDetails(data);
-          console.log(data);
+          if (data) {
+            setJobDetails(data);
+          } else {
+            dispatch(setToastStatus(0));
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          dispatch(setToastStatus(0));
         });
     }
   }, []);
@@ -122,22 +136,30 @@ export default function JobPostEdit() {
     },
   ];
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     let token = localStorage.getItem('Authorization');
     data = { ...data, token, id };
-    fetch('http://localhost:3001/admin/post-job', {
+    await fetch('http://localhost:3001/admin/post-job', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
     })
-      .then((response) => response.json())
-      .then((data) => setJobDetails(data));
+      .then((response) => {
+        response.json();
+      })
+      .then((data) => {
+        dispatch(setToastStatus(1));
+        navigate('/jobmanager', { replace: true });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
     <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
       <FormHeader
-        title={'Thêm bài đăng'}
+        title={id ? 'Chỉnh sửa bài đăng' : 'Thêm bài đăng'}
         icon={
           <EditIcon
             width={'30'}

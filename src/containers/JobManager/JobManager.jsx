@@ -10,11 +10,14 @@ import TrashIcon from 'components/Icons/TrashIcon';
 import Table from 'components/Table/Table';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setToastStatus } from 'Store/modules/AlertToast';
 
 const { confirm } = Modal;
 
 export default function JobManager() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const customStyles = {
     cursor: 'pointer',
@@ -142,7 +145,14 @@ export default function JobManager() {
     })
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
+        if (data) {
+          dispatch(setToastStatus(1));
+        }
         return data;
+      })
+      .catch((err) => {
+        dispatch(setToastStatus(0));
       });
     await setDataSource(jobs);
     await setFullDataSource(jobs);

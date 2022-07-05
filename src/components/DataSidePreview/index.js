@@ -27,7 +27,7 @@ function DataSidePreview({
   data,
   control,
   title,
-  submitButtonTitle = '編集内容を保存する',
+  submitButtonTitle = 'Lưu',
   onCancel,
   isEdit = false,
   deleteHandler,
@@ -80,7 +80,7 @@ function DataSidePreview({
                 type="button"
                 className="button button-default button-default-2"
               >
-                キャンセル
+                Hủy
               </button>
 
               <button
@@ -101,7 +101,7 @@ function DataSidePreview({
           type="button"
           className="button button-default button-default-2"
         >
-          キャンセル
+          Hủy
         </button>
 
         <button
